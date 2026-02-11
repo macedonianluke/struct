@@ -1,4 +1,8 @@
-# `gemini.md`
+---
+trigger: always_on
+---
+
+# `rules.md`
 
 ## 01. PROJECT IDENTITY: "STRUCT"
 

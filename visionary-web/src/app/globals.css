@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #ffffff;
+  --border-width: 1px;
+  --card-bg: #111111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.2;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+/* Header & Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: var(--border-width) solid var(--accent-color);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-bar {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 200;
+}
+
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.google-login-btn:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.google-login-btn img {
+  filter: brightness(0) invert(1);
+}
+
+.google-login-btn:hover img {
+  filter: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 8rem;
+  line-height: 0.8;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: 0.2em;
+  color: #888;
+}
+
+.search-container {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--accent-color);
+}
+
+.search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  padding: 1.5rem 2rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.search-input::placeholder {
+  color: #333;
+}
+
+.search-button {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 0 3rem;
+  font-weight: 900;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+
+.search-button:hover {
+  filter: invert(1);
+}
+
+.hero-tags {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #444;
+}
+
+/* Main App / Dashboard View - Modified to work with parent class instead of body */
+.app-active .hero {
+  height: 30vh;
+  padding: 1rem;
+}
+
+.app-active .logo {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-active .hero-subtitle,
+.app-active .hero-tags {
+  display: none;
+}
+
+.app-active .search-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.app-active .feed-header {
+  padding: 2rem;
+}
+
+/* Feed */
+.feed-header {
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: var(--border-width) solid var(--accent-color);
+}
+
+.feed {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Modal / Processing Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overlay.active {
+  display: flex;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.property-card {
+  margin-bottom: 4rem;
+  border: var(--border-width) solid var(--accent-color);
+  background: var(--card-bg);
+}
+
+.property-header {
+  padding: 1.5rem;
+  border-bottom: var(--border-width) solid var(--accent-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.property-title {
+  font-size: 2rem;
+}
+
+.property-meta {
+  font-size: 1rem;
+  text-align: right;
+  color: #888;
+}
+
+/* Slider Component */
+.image-comparison {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  /* Important for React slider */
+}
+
+.image-comparison img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  /* Initial state handled by inline style in React */
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* Initial state handled by inline style in React */
+  width: 2px;
+  height: 100%;
+  background: var(--accent-color);
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--accent-color);
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.label {
+  position: absolute;
+  bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.label-before {
+  left: 1rem;
+}
+
+.label-after {
+  right: 1rem;
+}
+
+/* Property Footer */
+.property-footer {
+  padding: 1.5rem;
+  border-top: var(--border-width) solid var(--accent-color);
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: var(--border-width) solid var(--accent-color);
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.btn:hover {
+  filter: invert(1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.property-card {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Footer */
+.main-footer {
+  padding: 6rem 2rem;
+  border-top: var(--border-width) solid var(--accent-color);
+  background: #080808;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #444;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .search-button {
+    padding: 0 1.5rem;
+    font-size: 1rem;
+  }
+
+  .property-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .property-meta {
+    text-align: left;
+  }
+}
+
+/* Scroll Indicators */
+.scroll-hint {
+  text-align: center;
+  padding: 4rem 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: #444;
+}

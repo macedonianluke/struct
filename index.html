@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Visionary - The Anti-Agent Real Estate Super-App. Instantly visualize property potential with AI.">
+    <title>VISIONARY | Structurally Intelligent AI Real Estate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="auth-bar" id="auth-container">
+            <button class="google-login-btn" id="google-login">
+                <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="G" width="20">
+                LOG IN WITH GOOGLE
+            </button>
+        </div>
+        <div class="hero-content">
+            <h1 class="logo">VISIONARY</h1>
+            <p class="hero-subtitle">DON'T BUY THE HOUSE. BUY THE VISION.</p>
+            <div class="search-container" id="main-search">
+                <input type="text" class="search-input" id="property-search"
+                    placeholder="PASTE LISTING URL OR ENTER SUBURB..." aria-label="Search properties">
+                <button class="search-button" id="search-submit">GO</button>
+            </div>
+            <div class="hero-tags">
+                <span>[ POPULAR: FITZROY ]</span>
+                <span>[ NEW: COLLINGWOOD ]</span>
+                <span>[ TRENDING: JAPANDI ]</span>
+            </div>
+        </div>
+    </section>
+
+    <main id="app">
+        <div class="feed-header">
+            <h3>DISCOVER POTENTIAL</h3>
+        </div>
+        <div class="feed" id="property-feed">
+            <!-- Property cards will be injected here by app.js -->
+        </div>
+        <div class="scroll-hint">SCROLL TO UNLOCK MORE VISIONS ↓</div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div>© 2026 VISIONARY CORE</div>
+            <div>[ RUTHLESSLY MODULAR ]</div>
+        </div>
+    </footer>
+
+    <div id="vision-overlay" class="overlay">
+        <div class="spinner"></div>
+        <h3 id="overlay-text">ANALYZING ARCHITECTURAL DETAILS...</h3>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
